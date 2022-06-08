@@ -1,0 +1,91 @@
+/* bitter-regular - latin */
+@font-face {
+  font-family: 'Bitter';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/bitter/bitter-v26-latin-regular.woff2') format('woff2'),
+       url('/fonts/bitter/bitter-v26-latin-regular.woff') format('woff');
+}
+/* bitter-600 - latin */
+@font-face {
+  font-family: 'Bitter';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+       url('/fonts/bitter/bitter-v26-latin-600.woff2') format('woff2'),
+       url('/fonts/bitter/bitter-v26-latin-600.woff') format('woff');
+}
+/* bitter-500 - latin */
+@font-face {
+  font-family: 'Bitter';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('/fonts/bitter/bitter-v26-latin-500.woff2') format('woff2'),
+       url('/fonts/bitter/bitter-v26-latin-500.woff') format('woff');
+}
+/* bitter-700 - latin */
+@font-face {
+  font-family: 'Bitter';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/fonts/bitter/bitter-v26-latin-700.woff2') format('woff2'),
+       url('/fonts/bitter/bitter-v26-latin-700.woff') format('woff');
+}
+
+/* spline-sans-300 - latin */
+@font-face {
+  font-family: 'Spline Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+       url('/fonts/spline-sans/spline-sans-v5-latin-300.woff2') format('woff2'),
+       url('/fonts/spline-sans/spline-sans-v5-latin-300.woff') format('woff');
+}
+/* spline-sans-500 - latin */
+@font-face {
+  font-family: 'Spline Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('/fonts/spline-sans/spline-sans-v5-latin-500.woff2') format('woff2'),
+       url('/fonts/spline-sans/spline-sans-v5-latin-500.woff') format('woff');
+}
+/* spline-sans-regular - latin */
+@font-face {
+  font-family: 'Spline Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('/fonts/spline-sans/spline-sans-v5-latin-regular.woff2') format('woff2'),
+       url('/fonts/spline-sans/spline-sans-v5-latin-regular.woff') format('woff');
+}
+/* spline-sans-600 - latin */
+@font-face {
+  font-family: 'Spline Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+       url('/fonts/spline-sans/spline-sans-v5-latin-600.woff2') format('woff2'),
+       url('/fonts/spline-sans/spline-sans-v5-latin-600.woff') format('woff');
+}
+/* spline-sans-700 - latin */
+@font-face {
+  font-family: 'Spline Sans';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('/fonts/spline-sans/spline-sans-v5-latin-700.woff2') format('woff2'),
+       url('/fonts/spline-sans/spline-sans-v5-latin-700.woff') format('woff');
+}

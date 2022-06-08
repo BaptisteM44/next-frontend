@@ -1,0 +1,12 @@
+.description p {
+  @apply mb-2 text-sm leading-relaxed md:text-base;
+}
+.description h2 {
+  @apply mb-2 text-base font-medium leading-relaxed md:text-lg;
+}
+.description ul {
+  @apply mb-2;
+}
+.description li {
+  @apply text-sm leading-relaxed md:text-base;
+}
