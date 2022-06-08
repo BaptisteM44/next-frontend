@@ -19,7 +19,7 @@ type StaticPropsParams = ParsedUrlQuery & {
 };
 
 type CategoryPageProps = {
-  products: Awaited<ReturnType<typeof findProductsByCategorySlug>>;
+  products: ProductCard[];
   category: Awaited<ReturnType<typeof findCategoryBySlug>>;
 };
 
@@ -40,30 +40,37 @@ export const getStaticProps: GetStaticProps<
   StaticPropsParams
 > = async (context) => {
   const { slug } = context.params!;
-  const products = await findProductsByCategorySlug(slug);
+
+  const products = await findProductsByCategorySlug(slug).then(
+    (categoryProducts) =>
+      categoryProducts.map((categoryProduct) => ({
+        category: {
+          name: categoryProduct.attributes.product_category.data.attributes
+            .name,
+          slug: categoryProduct.attributes.product_category.data.attributes
+            .slug,
+        },
+        imageSrc: categoryProduct.attributes.product_image.data.attributes.url,
+        name: categoryProduct.attributes.product_name,
+        onSale: categoryProduct.attributes.product_price.sale_price > 0,
+        price: {
+          regular: formatPrice(
+            categoryProduct.attributes.product_price.regular_price
+          ),
+          sale: categoryProduct.attributes.product_price.sale_price
+            ? formatPrice(categoryProduct.attributes.product_price.sale_price)
+            : null,
+        },
+        slug: categoryProduct.attributes.slug,
+      }))
+  );
+
   const category = await findCategoryBySlug(slug);
 
   return { props: { products, category } };
 };
 
 const Category: NextPage<CategoryPageProps> = ({ products, category }) => {
-  const productsCards: ProductCard[] = products.map((product) => ({
-    category: {
-      name: product.attributes.product_category.data.attributes.name,
-      slug: product.attributes.product_category.data.attributes.slug,
-    },
-    imageSrc: product.attributes.product_image.data.attributes.url,
-    name: product.attributes.product_name,
-    onSale: product.attributes.product_price.sale_price > 0,
-    price: {
-      regular: formatPrice(product.attributes.product_price.regular_price),
-      sale: product.attributes.product_price.sale_price
-        ? formatPrice(product.attributes.product_price.sale_price)
-        : null,
-    },
-    slug: product.attributes.slug,
-  }));
-
   return (
     <>
       <SEO
@@ -88,7 +95,7 @@ const Category: NextPage<CategoryPageProps> = ({ products, category }) => {
             Our {category.attributes.name} products
           </h1>
 
-          <ProductCards className="px-6" products={productsCards} />
+          <ProductCards className="px-6" products={products} />
         </div>
       </section>
     </>
