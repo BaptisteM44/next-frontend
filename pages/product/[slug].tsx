@@ -5,7 +5,6 @@ import { useState } from "react";
 import type { ProductCard as IProductCard } from "@/types/ProductTypes";
 import { getAllProductsWithSlug, findProductBySlug } from "@/lib/api";
 import { formatPrice } from "@/lib/formatPrice";
-import { formatImageUrl } from "@/lib/formatImageUrl";
 import SEO from "@/components/SEO";
 import ProductImageGallery from "@/components/product/ProductImageGallery";
 import ProductDescription from "@/components/product/ProductDescription/ProductDescription";
@@ -49,7 +48,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 
   const images = product.attributes.product_images_gallery.data.map(
     (image) => ({
-      src: formatImageUrl(image.attributes.url),
+      src: image.attributes.url,
       alt: image.attributes.alternativeText,
     })
   );
@@ -72,9 +71,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
         name: linkedProduct.attributes.product_category.data.attributes.name,
         slug: linkedProduct.attributes.product_category.data.attributes.slug,
       },
-      imageSrc: formatImageUrl(
-        linkedProduct.attributes.product_image.data.attributes.url
-      ),
+      imageSrc: linkedProduct.attributes.product_image.data.attributes.url,
       name: linkedProduct.attributes.product_name,
       onSale: linkedProduct.attributes.product_price.sale_price > 0,
       price: {

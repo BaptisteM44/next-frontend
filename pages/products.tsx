@@ -5,7 +5,6 @@ import ShopHeaderImageSrc from "@/public/images/shop-header.jpg";
 
 import { getAllProducts } from "@/lib/api";
 import { formatPrice } from "@/lib/formatPrice";
-import { formatImageUrl } from "@/lib/formatImageUrl";
 import SEO from "@/components/SEO";
 import ProductCards from "@/components/product/ProductCards/ProductCards";
 
@@ -25,9 +24,7 @@ const Products: NextPage<ProductsPageProps> = ({ products }) => {
       name: product.attributes.product_category.data.attributes.name,
       slug: product.attributes.product_category.data.attributes.slug,
     },
-    imageSrc: formatImageUrl(
-      product.attributes.product_image.data.attributes.url
-    ),
+    imageSrc: product.attributes.product_image.data.attributes.url,
     name: product.attributes.product_name,
     onSale: product.attributes.product_price.sale_price > 0,
     price: {

@@ -12,10 +12,6 @@ import type {
 const fetchStrapi = async <T>(endpoint: string) => {
   const response = await fetch(`${process.env.STRAPI_BASE_URL}${endpoint}`);
 
-  console.log(
-    `Fetching content from: ${process.env.STRAPI_BASE_URL}${endpoint}`
-  );
-
   if (!response.ok) {
     throw new Error(
       `Unable to fetch ${process.env.STRAPI_BASE_URL}${endpoint}`
