@@ -4,9 +4,14 @@ import Head from "next/head";
 export type SEOProps = {
   title: string;
   description: string;
+  imageUrl?: string;
 };
 
-const SEO: React.FC<SEOProps> = ({ title, description }) => {
+const SEO: React.FC<SEOProps> = ({
+  title,
+  description,
+  imageUrl = "https://blooms.fuelthemes.net/wp-content/uploads/2022/02/m1-2.jpg?w=640",
+}) => {
   const router = useRouter();
 
   return (
@@ -17,10 +22,7 @@ const SEO: React.FC<SEOProps> = ({ title, description }) => {
       <meta content="@totominc" name="twitter:site" />
       <meta content="@totominc" name="twitter:creator" />
       <meta content="summary_large_image" name="twitter:card" />
-      <meta
-        content="https://blooms.fuelthemes.net/wp-content/uploads/2022/02/m1-2.jpg?w=640"
-        name="twitter:image"
-      />
+      <meta content={imageUrl} name="twitter:image" />
 
       <meta content={title} property="og:title" />
       <meta
@@ -28,10 +30,7 @@ const SEO: React.FC<SEOProps> = ({ title, description }) => {
         property="og:url"
       />
       <meta content={description} property="og:description" />
-      <meta
-        content="https://blooms.fuelthemes.net/wp-content/uploads/2022/02/m1-2.jpg?w=640"
-        property="og:image"
-      />
+      <meta content={imageUrl} property="og:image" />
 
       <meta content="#fff" name="theme-color" />
     </Head>

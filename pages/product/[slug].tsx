@@ -90,6 +90,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
       <SEO
         title={`${product.attributes.product_name} — Blooms Co.`}
         description={product.attributes.product_short_description}
+        imageUrl={images[0].src}
       />
 
       <div className="flex flex-col px-6 py-6 md:flex-row md:flex-wrap lg:mx-auto lg:max-w-[1200px]">
