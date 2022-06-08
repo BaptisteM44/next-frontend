@@ -10,7 +10,7 @@ import {
   findProductsByCategorySlug,
   findCategoryBySlug,
 } from "@/lib/api";
-import { formatPrice } from "@/lib/formatPrice";
+import { toProductCard } from "@/lib/apiCleaner";
 import SEO from "@/components/SEO";
 import ProductCards from "@/components/product/ProductCards/ProductCards";
 
@@ -43,26 +43,7 @@ export const getStaticProps: GetStaticProps<
 
   const products = await findProductsByCategorySlug(slug).then(
     (categoryProducts) =>
-      categoryProducts.map((categoryProduct) => ({
-        category: {
-          name: categoryProduct.attributes.product_category.data.attributes
-            .name,
-          slug: categoryProduct.attributes.product_category.data.attributes
-            .slug,
-        },
-        imageSrc: categoryProduct.attributes.product_image.data.attributes.url,
-        name: categoryProduct.attributes.product_name,
-        onSale: categoryProduct.attributes.product_price.sale_price > 0,
-        price: {
-          regular: formatPrice(
-            categoryProduct.attributes.product_price.regular_price
-          ),
-          sale: categoryProduct.attributes.product_price.sale_price
-            ? formatPrice(categoryProduct.attributes.product_price.sale_price)
-            : null,
-        },
-        slug: categoryProduct.attributes.slug,
-      }))
+      categoryProducts.map((product) => toProductCard(product.attributes))
   );
 
   const category = await findCategoryBySlug(slug);

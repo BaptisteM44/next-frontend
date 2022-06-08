@@ -111,7 +111,7 @@ export const findProductBySlug = async (slug: string) => {
  */
 export const findProductsByCategorySlug = async (slug: string) => {
   const products = await fetchStrapi<StrapiMultipleResponse<StrapiProduct>>(
-    `/api/products?filters[product_category][slug][$eq]=${slug}&populate=*`
+    `/api/products?filters[product_category][slug][$eq]=${slug}&populate=deep`
   );
 
   return products.data;

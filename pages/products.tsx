@@ -3,39 +3,25 @@ import Image from "next/image";
 
 import ShopHeaderImageSrc from "@/public/images/shop-header.jpg";
 
+import type { ProductCard } from "@/types/ProductTypes";
 import { getAllProducts } from "@/lib/api";
-import { formatPrice } from "@/lib/formatPrice";
+import { toProductCard } from "@/lib/apiCleaner";
 import SEO from "@/components/SEO";
 import ProductCards from "@/components/product/ProductCards/ProductCards";
 
 type ProductsPageProps = {
-  products: Awaited<ReturnType<typeof getAllProducts>>;
+  products: ProductCard[];
 };
 
 export const getStaticProps: GetStaticProps<ProductsPageProps> = async () => {
-  const products = await getAllProducts();
+  const products = await getAllProducts().then((allProducts) =>
+    allProducts.map((product) => toProductCard(product.attributes))
+  );
 
   return { props: { products } };
 };
 
 const Products: NextPage<ProductsPageProps> = ({ products }) => {
-  const productsCards = products.map((product) => ({
-    category: {
-      name: product.attributes.product_category.data.attributes.name,
-      slug: product.attributes.product_category.data.attributes.slug,
-    },
-    imageSrc: product.attributes.product_image.data.attributes.url,
-    name: product.attributes.product_name,
-    onSale: product.attributes.product_price.sale_price > 0,
-    price: {
-      regular: formatPrice(product.attributes.product_price.regular_price),
-      sale: product.attributes.product_price.sale_price
-        ? formatPrice(product.attributes.product_price.sale_price)
-        : null,
-    },
-    slug: product.attributes.slug,
-  }));
-
   return (
     <>
       <SEO
@@ -60,7 +46,7 @@ const Products: NextPage<ProductsPageProps> = ({ products }) => {
             Our products
           </h1>
 
-          <ProductCards className="px-6" products={productsCards} />
+          <ProductCards className="px-6" products={products} />
         </div>
       </section>
     </>
