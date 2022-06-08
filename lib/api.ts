@@ -1,6 +1,7 @@
 import type {
   StrapiMultipleResponse,
   StrapiProduct,
+  StrapiCategory,
 } from "@/types/StrapiTypes";
 
 /**
@@ -21,6 +22,19 @@ const fetchStrapi = async <T>(endpoint: string) => {
   const json = (await response.json()) as T;
 
   return json;
+};
+
+/**
+ * Fetch all product categories.
+ *
+ * @returns All product categories.
+ */
+export const getAllCategories = async () => {
+  const categories = await fetchStrapi<StrapiMultipleResponse<StrapiCategory>>(
+    `/api/product-categories?populate=deep`
+  );
+
+  return categories.data;
 };
 
 /**
@@ -53,6 +67,24 @@ export const getAllProductsWithSlug = async () => {
 };
 
 /**
+ * Find a category based on its slug.
+ *
+ * @param slug Category slug.
+ * @returns Throw an error if no category is found.
+ */
+export const findCategoryBySlug = async (slug: string) => {
+  const category = await fetchStrapi<StrapiMultipleResponse<StrapiCategory>>(
+    `/api/product-categories?filters[slug][$eq]=${slug}&populate=deep`
+  );
+
+  if (!category.data.length) {
+    throw new Error(`No category found for slug ${slug}`);
+  }
+
+  return category.data[0];
+};
+
+/**
  * Find a product based on its slug.
  *
  * @param slug Product slug.
@@ -69,4 +101,18 @@ export const findProductBySlug = async (slug: string) => {
   }
 
   return product.data[0];
+};
+
+/**
+ * Fetch a list of product from a specific category.
+ *
+ * @param slug Category slug.
+ * @returns A list of products.
+ */
+export const findProductsByCategorySlug = async (slug: string) => {
+  const products = await fetchStrapi<StrapiMultipleResponse<StrapiProduct>>(
+    `/api/products?filters[product_category][slug][$eq]=${slug}&populate=*`
+  );
+
+  return products.data;
 };
