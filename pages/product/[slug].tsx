@@ -66,11 +66,6 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
     slug: product.attributes.product_category.data.attributes.slug,
   };
 
-  const tags = product.attributes.product_tags.data.map((tag) => ({
-    name: tag.attributes.name,
-    slug: tag.attributes.slug,
-  }));
-
   const relatedProducts: IProductCard[] =
     product.attributes.linked_products.data.map((linkedProduct) => ({
       category: {
@@ -130,7 +125,6 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
           <ProductDetails
             sku={product.attributes.product_inventory.sku}
             category={category}
-            tags={tags}
           />
         </section>
 

@@ -136,14 +136,6 @@ export type StrapiCategory = BaseStrapiItemResponse & {
 };
 
 /**
- * Tag properties.
- */
-export type StrapiTag = BaseStrapiItemResponse & {
-  name: string;
-  slug: string;
-};
-
-/**
  * Product properties.
  */
 export type StrapiProduct = BaseStrapiItemResponse & {
@@ -162,7 +154,6 @@ export type StrapiProduct = BaseStrapiItemResponse & {
   linked_products: StrapiItemRelationships<StrapiProduct>;
   product_attributes: unknown;
   product_category: StrapiItemRelationship<StrapiCategory>;
-  product_tags: StrapiItemRelationships<StrapiTag>;
   product_image: StrapiItemImage;
   product_images_gallery: StrapiItemImages;
 };

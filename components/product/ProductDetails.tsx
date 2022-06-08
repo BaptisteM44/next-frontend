@@ -6,17 +6,9 @@ export type ProductDetailsProps = {
     name: string;
     slug: string;
   };
-  tags: {
-    name: string;
-    slug: string;
-  }[];
 };
 
-const ProductDetails: React.FC<ProductDetailsProps> = ({
-  sku,
-  category,
-  tags,
-}) => {
+const ProductDetails: React.FC<ProductDetailsProps> = ({ sku, category }) => {
   return (
     <div>
       <p className="mb-1 text-xs text-accent">SKU: {sku}</p>
@@ -26,23 +18,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
         <Link className="underline" href={`/category/${category.slug}`}>
           {category.name}
         </Link>
-      </p>
-
-      <p className="mb-1 text-xs text-accent">
-        Tags:&nbsp;
-        {tags.map((tag, i) => (
-          <Link
-            passHref
-            className="underline"
-            key={tag.slug}
-            href={`/tag/${tag.slug}`}
-          >
-            <a>
-              {tag.name}
-              {i < tags.length - 1 ? ", " : ""}
-            </a>
-          </Link>
-        ))}
       </p>
     </div>
   );
