@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import cx from "classnames";
 
@@ -17,6 +17,12 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
   images,
 }) => {
   const [currentImage, setCurrentImage] = useState<ImageGallery>(images[0]);
+
+  // When `images` changes, it means we have changed product page.
+  // Refresh the current image by displaying the first image of the new product.
+  useEffect(() => {
+    setCurrentImage(images[0]);
+  }, [images]);
 
   return (
     <section className={cx("flex flex-col", className)}>
