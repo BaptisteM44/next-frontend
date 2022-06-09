@@ -117,7 +117,18 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
               handleRemoveCount={() => (count > 1 ? setCount(count - 1) : null)}
             />
 
-            <ProductCta>Add to cart</ProductCta>
+            <ProductCta
+              id={product.attributes.slug}
+              name={product.attributes.product_name}
+              price={
+                product.attributes.product_price.sale_price ||
+                product.attributes.product_price.regular_price
+              }
+              description={product.attributes.product_short_description}
+              imageSrc={images[0].src}
+            >
+              Add to cart
+            </ProductCta>
           </div>
 
           <ProductDetails
