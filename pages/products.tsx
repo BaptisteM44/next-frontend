@@ -36,7 +36,7 @@ const Products: NextPage<ProductsPageProps> = ({ products }) => {
             alt=""
             objectFit="cover"
             layout="fill"
-            sizes="100vw"
+            sizes="25vw"
             priority
           />
         </div>
