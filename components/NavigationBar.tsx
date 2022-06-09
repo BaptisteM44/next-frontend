@@ -8,7 +8,7 @@ import MobileMenuIcon from "./icons/MobileMenuIcon";
 import ProfileMenuIcon from "./icons/ProfileMenuIcon";
 
 const NavigationBar: React.FC = () => (
-  <header className="sticky top-0 left-0 z-50 flex flex-wrap items-center border-b border-gray-200 bg-white">
+  <header className="sticky top-0 left-0 z-[1] flex flex-wrap items-center border-b border-gray-200 bg-white">
     <div
       className="grid w-full items-center justify-start py-5 px-4 lg:flex lg:justify-between lg:py-7 lg:px-14"
       style={{ gridTemplateColumns: "1fr auto 1fr" }}
@@ -35,7 +35,7 @@ const NavigationBar: React.FC = () => (
 
       <div className="flex items-center justify-end">
         <ProfileMenuIcon className="mr-4 text-accent" />
-        <CartMenuIcon className="text-accent" />
+        <CartMenuIcon className="snipcart-checkout cursor-pointer text-accent" />
       </div>
     </div>
   </header>
