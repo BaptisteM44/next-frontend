@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 const Document = () => {
   return (
-    <Html className="antialiased" lang="en-US">
+    <Html className="antialiased" lang="en">
       <Head />
 
       <body>
