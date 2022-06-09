@@ -13,6 +13,9 @@ export type ProductPrice = {
   sale: string | null;
 };
 
+/**
+ * Payload of a product card, should be used with `ProductCards`.
+ */
 export type ProductCard = {
   slug: string;
   imageSrc: string;
@@ -20,4 +23,22 @@ export type ProductCard = {
   category: ProductCategory;
   price: ProductPrice;
   onSale: boolean;
+};
+
+/**
+ * Payload of a product in `/products/[slug]`
+ */
+export type ProductPage = {
+  slug: string;
+  name: string;
+  shortDescription: string;
+  description: string;
+  sku: string;
+  imageGallery: {
+    src: string;
+    alt: string;
+  }[];
+  price: ProductPrice;
+  category: ProductCategory;
+  relatedProducts: ProductCard[];
 };
