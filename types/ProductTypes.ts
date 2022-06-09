@@ -39,6 +39,7 @@ export type ProductPage = {
     alt: string;
   }[];
   price: ProductPrice;
+  snipcartPrice: string;
   category: ProductCategory;
   relatedProducts: ProductCard[];
 };

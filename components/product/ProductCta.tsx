@@ -2,9 +2,10 @@ export type ProductCtaProps = {
   children: React.ReactNode;
   id: string;
   name: string;
-  price: number;
+  price: string;
   description: string;
   imageSrc: string;
+  pageUrl: string;
 };
 
 const ProductCta: React.FC<ProductCtaProps> = ({
@@ -14,6 +15,7 @@ const ProductCta: React.FC<ProductCtaProps> = ({
   price,
   description,
   imageSrc,
+  pageUrl,
 }) => {
   return (
     <button
@@ -24,6 +26,7 @@ const ProductCta: React.FC<ProductCtaProps> = ({
       data-item-price={price}
       data-item-description={description}
       data-item-image={imageSrc}
+      data-item-url={pageUrl}
     >
       {children}
     </button>

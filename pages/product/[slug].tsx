@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import type { ProductPage } from "@/types/ProductTypes";
 import { getAllProductsWithSlug, findProductBySlug } from "@/lib/api";
@@ -46,6 +47,8 @@ export const getStaticProps: GetStaticProps<
 };
 
 const Product: NextPage<ProductPageProps> = ({ product }) => {
+  const router = useRouter();
+
   const [count, setCount] = useState(1);
 
   return (
@@ -86,9 +89,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
             <ProductCta
               id={product.slug}
               name={product.name}
-              price={parseInt(product.price.sale || product.price.regular, 10)}
+              price={product.snipcartPrice}
               description={product.shortDescription}
               imageSrc={product.imageGallery[0].src}
+              pageUrl={router.asPath}
             >
               Add to cart
             </ProductCta>

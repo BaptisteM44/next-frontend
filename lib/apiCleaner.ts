@@ -1,6 +1,6 @@
 import type { StrapiProduct } from "@/types/StrapiTypes";
 import type { ProductCard, ProductPage } from "@/types/ProductTypes";
-import { formatPrice } from "@/lib/formatPrice";
+import { formatPrice, formatSnipcartPrice } from "@/lib/formatPrice";
 
 /**
  * Reduce Next.js payload by reducing a raw Strapi product to only essential
@@ -49,6 +49,9 @@ export const toProductPage = (product: StrapiProduct): ProductPage => ({
       ? formatPrice(product.product_price.sale_price)
       : null,
   },
+  snipcartPrice: formatSnipcartPrice(
+    product.product_price.sale_price || product.product_price.regular_price
+  ),
   category: {
     name: product.product_category.data.attributes.name,
     slug: product.product_category.data.attributes.slug,
