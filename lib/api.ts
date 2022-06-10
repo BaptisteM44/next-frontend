@@ -1,8 +1,32 @@
+import qs from "qs";
+
 import type {
   StrapiMultipleResponse,
   StrapiProduct,
   StrapiCategory,
 } from "@/types/StrapiTypes";
+
+const productQuery = qs.stringify(
+  {
+    fields: "*",
+    populate: {
+      product_image: { fields: ["url", "alternativeText"] },
+      product_inventory: { fields: ["sku"] },
+      product_images_gallery: { fields: ["url", "alternativeText"] },
+      product_price: { fields: ["regular_price", "sale_price"] },
+      product_category: { fields: ["name", "slug"] },
+      linked_products: {
+        fields: ["product_name", "slug"],
+        populate: {
+          product_image: { fields: ["url", "alternativeText"] },
+          product_price: { fields: ["regular_price", "sale_price"] },
+          product_category: { fields: ["name", "slug"] },
+        },
+      },
+    },
+  },
+  { encodeValuesOnly: true }
+);
 
 /**
  * Base fetch function for all Strapi API requests.
@@ -44,7 +68,7 @@ export const getAllCategories = async () => {
  */
 export const getAllProducts = async () => {
   const products = await fetchStrapi<StrapiMultipleResponse<StrapiProduct>>(
-    `/api/products?populate=deep`
+    `/api/products?${productQuery}`
   );
 
   return products.data;
@@ -93,7 +117,7 @@ export const findCategoryBySlug = async (slug: string) => {
  */
 export const findProductBySlug = async (slug: string) => {
   const product = await fetchStrapi<StrapiMultipleResponse<StrapiProduct>>(
-    `/api/products?filters[slug][$eq]=${slug}&populate=deep`
+    `/api/products?filters[slug][$eq]=${slug}&${productQuery}`
   );
 
   if (!product.data.length) {
@@ -111,7 +135,7 @@ export const findProductBySlug = async (slug: string) => {
  */
 export const findProductsByCategorySlug = async (slug: string) => {
   const products = await fetchStrapi<StrapiMultipleResponse<StrapiProduct>>(
-    `/api/products?filters[product_category][slug][$eq]=${slug}&populate=deep`
+    `/api/products?filters[product_category][slug][$eq]=${slug}&${productQuery}`
   );
 
   return products.data;
