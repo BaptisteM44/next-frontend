@@ -85,7 +85,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
           <p className="mb-4 font-display text-xl text-accent md:mb-8 md:text-2xl">
             <span
               className={
-                product.price.sale ? "mr-2 text-gray-400 line-through" : ""
+                product.price.sale ? "mr-2 text-gray-500 line-through" : ""
               }
             >
               {product.price.regular}€

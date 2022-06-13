@@ -40,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <p className="font-display text-base text-accent">
         <span
           className={
-            product.price.sale ? "mr-2 text-gray-400 line-through" : ""
+            product.price.sale ? "mr-2 text-gray-500 line-through" : ""
           }
         >
           {product.price.regular}€
