@@ -75,6 +75,19 @@ export const getAllProducts = async () => {
 };
 
 /**
+ * Fetch all products that have `is_best_seller` set to `true`.
+ *
+ * @returns All featured products.
+ */
+export const getAllFeaturedProducts = async () => {
+  const featuredProducts = await fetchStrapi<
+    StrapiMultipleResponse<StrapiProduct>
+  >(`/api/products?${productQuery}&filters[is_best_seller][$eq]=true`);
+
+  return featuredProducts.data;
+};
+
+/**
  * Fetch all products and map them into a list of `id` and `slug`.
  *
  * @returns List of products with `id` and `slug` properties.
