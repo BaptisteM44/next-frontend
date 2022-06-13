@@ -1,10 +1,10 @@
 .description p {
-  @apply mb-2 text-sm leading-relaxed md:text-base;
+  @apply mb-2 text-sm leading-relaxed md:text-base text-neutral-800;
 }
 
 .description h2,
 .description h3 {
-  @apply mb-2 text-base font-medium leading-relaxed md:text-lg;
+  @apply mb-2 mt-4 text-base font-medium font-display leading-relaxed md:text-lg text-accent;
 }
 
 .description ul {
@@ -12,5 +12,5 @@
 }
 
 .description li {
-  @apply text-sm leading-relaxed md:text-base;
+  @apply text-sm leading-relaxed md:text-base text-neutral-800;
 }
