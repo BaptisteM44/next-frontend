@@ -24,8 +24,6 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
 };
 
 const Home: NextPage<HomePageProps> = ({ featuredProducts }) => {
-  console.log(featuredProducts);
-
   return (
     <>
       <SEO
