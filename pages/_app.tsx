@@ -3,7 +3,7 @@ import Head from "next/head";
 
 import "../styles/global.css";
 
-import { SnipcartScript } from "@/components/SnipcartScript";
+import SnipcartScript from "@/components/SnipcartScript";
 import Layout from "@/components/Layout";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

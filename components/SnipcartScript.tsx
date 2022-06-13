@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-export const SnipcartScript: React.FC = () => (
+const SnipcartScript: React.FC = () => (
   <Script
     id="snipcart"
     strategy="afterInteractive"
@@ -18,3 +18,5 @@ export const SnipcartScript: React.FC = () => (
     }}
   />
 );
+
+export default SnipcartScript;
