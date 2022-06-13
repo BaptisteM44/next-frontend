@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import cx from "classnames";
 
 export type PaginationProps = {
@@ -21,9 +22,31 @@ const Pagination: React.FC<PaginationProps> = ({
     return Array.from({ length: totalPages }, (_, i) => i);
   }, [count, itemsPerPage]);
 
+  const goPreviousPage = () => {
+    if (currentPage > 0) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const goNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
   return (
     <div className={cx("w-full", className)}>
       <ul className="flex items-center justify-center">
+        <li className="flex w-10 cursor-pointer items-center justify-center text-center">
+          <button
+            type="button"
+            className="text-accent"
+            onClick={goPreviousPage}
+          >
+            <ChevronLeftIcon className="h-auto w-4" />
+          </button>
+        </li>
+
         {pages.map((page) => (
           <li
             className="flex w-10 cursor-pointer items-center justify-center text-center"
@@ -32,7 +55,7 @@ const Pagination: React.FC<PaginationProps> = ({
             <button
               type="button"
               className={cx(
-                "block h-full w-full",
+                "block h-full w-full text-accent",
                 page === currentPage ? "font-bold" : ""
               )}
               onClick={() => onPageChange(page)}
@@ -41,6 +64,12 @@ const Pagination: React.FC<PaginationProps> = ({
             </button>
           </li>
         ))}
+
+        <li className="flex w-10 cursor-pointer items-center justify-center text-center">
+          <button type="button" className="text-accent" onClick={goNextPage}>
+            <ChevronRightIcon className="h-auto w-4" />
+          </button>
+        </li>
       </ul>
     </div>
   );
