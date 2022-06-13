@@ -69,7 +69,7 @@ const Products: NextPage<ProductsPageProps> = ({ products }) => {
           <ProductCards className="mb-16 px-6" products={pageProducts} />
 
           <Pagination
-            count={pageProducts.length}
+            count={products.length}
             itemsPerPage={12}
             currentPage={currentPage}
             onPageChange={handlePageChange}
