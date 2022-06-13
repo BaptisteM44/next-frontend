@@ -18,8 +18,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             alt={product.name}
             layout="fill"
             objectFit="cover"
-            quality={75}
-            sizes="50vw"
+            quality={70}
+            sizes="33vw"
             priority
           />
         </a>
