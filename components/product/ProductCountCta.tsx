@@ -22,7 +22,7 @@ const ProductCountCta: React.FC<ProductCountCtaProps> = ({
         <MinusSmIcon aria-hidden="true" className="-ml-2 h-auto w-4" />
       </button>
 
-      <span className="mx-auto inline-block w-6 text-center font-display text-sm text-black">
+      <span className="mx-auto inline-block w-6 text-center font-display text-sm text-accent">
         {count}
       </span>
 
