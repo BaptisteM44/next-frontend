@@ -29,8 +29,11 @@ const NavigationBar: React.FC = () => {
           type="button"
           className="inline-flex items-center lg:hidden"
           onClick={() => setIsMobileMenuOpened(!isMobileMenuOpened)}
+          aria-label="Toggle mobile menu"
         >
-          <MobileMenuIcon className="text-accent" />
+          <span aria-hidden="true">
+            <MobileMenuIcon className="text-accent" />
+          </span>
         </button>
 
         <div className="flex items-center justify-center lg:justify-between">
@@ -64,7 +67,16 @@ const NavigationBar: React.FC = () => {
 
         <div className="flex items-center justify-end">
           <ProfileMenuIcon className="mr-4 text-accent" />
-          <CartMenuIcon className="snipcart-checkout cursor-pointer text-accent" />
+
+          <button
+            type="button"
+            aria-label="Open cart"
+            className="snipcart-checkout"
+          >
+            <span aria-hidden="true">
+              <CartMenuIcon className="cursor-pointer text-accent" />
+            </span>
+          </button>
         </div>
       </div>
 
