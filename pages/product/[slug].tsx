@@ -123,7 +123,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 
         {product.relatedProducts.length ? (
           <section className="md:w-full md:pt-24">
-            <h2 className="mb-4 font-display text-xl text-accent lg:text-3xl lg:font-medium">
+            <h2 className="mb-6 font-display text-xl text-accent lg:text-3xl lg:font-medium">
               Related products
             </h2>
 
