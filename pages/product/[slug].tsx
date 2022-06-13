@@ -7,6 +7,7 @@ import type { ProductPage } from "@/types/ProductTypes";
 import { getAllProductsWithSlug, findProductBySlug } from "@/lib/api";
 import { toProductPage } from "@/lib/apiCleaner";
 import SEO from "@/components/SEO";
+import ProductBreadcrumbs from "@/components/product/ProductBreadcrumbs";
 import ProductImageGallery from "@/components/product/ProductImageGallery";
 import ProductDescription from "@/components/product/ProductDescription/ProductDescription";
 import ProductCountCta from "@/components/product/ProductCountCta";
@@ -60,6 +61,12 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
       />
 
       <div className="flex flex-col px-6 py-6 md:flex-row md:flex-wrap lg:mx-auto lg:max-w-[1200px]">
+        <ProductBreadcrumbs
+          className="mb-6"
+          category={product.category}
+          name={product.name}
+        />
+
         <ProductImageGallery
           className="mb-6 md:w-1/2"
           images={product.imageGallery}
