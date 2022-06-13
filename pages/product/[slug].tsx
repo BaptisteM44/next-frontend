@@ -62,15 +62,20 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 
       <div className="flex flex-col px-6 py-6 md:flex-row md:flex-wrap lg:mx-auto lg:max-w-[1200px]">
         <ProductBreadcrumbs
-          className="mb-6"
+          className="mb-6 md:hidden"
           category={product.category}
           name={product.name}
         />
 
-        <ProductImageGallery
-          className="mb-6 md:w-1/2"
-          images={product.imageGallery}
-        />
+        <section className="mb-6 md:w-1/2">
+          <ProductBreadcrumbs
+            className="mb-6 hidden md:flex"
+            category={product.category}
+            name={product.name}
+          />
+
+          <ProductImageGallery images={product.imageGallery} />
+        </section>
 
         <section className="mb-12 md:w-1/2 md:pl-8 lg:pl-12">
           <h1 className="mb-4 font-display text-3xl font-medium leading-tight text-accent md:mb-8 md:text-4xl">

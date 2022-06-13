@@ -8,7 +8,7 @@ type ImageGallery = {
 };
 
 type ProductImageGalleryProps = {
-  className: string;
+  className?: string;
   images: ImageGallery[];
 };
 
@@ -25,7 +25,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
   }, [images]);
 
   return (
-    <section className={cx("flex flex-col", className)}>
+    <div className={cx("flex flex-col", className)}>
       <div className="relative mb-4 min-h-[500px] w-full sm:min-h-[600px] lg:min-h-[768px]">
         <Image
           className="rounded-md"
@@ -61,7 +61,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
           </li>
         ))}
       </ol>
-    </section>
+    </div>
   );
 };
 
