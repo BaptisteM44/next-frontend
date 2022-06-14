@@ -15,8 +15,9 @@ const NavigationBar: React.FC = () => {
   const links = [
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
-    { name: "Best-sellers", href: "/products" },
+    { name: "Best-sellers", href: "/best-sellers" },
     { name: "Houseplants", href: "/category/houseplants" },
+    { name: "Rares & Unusual", href: "/category/rare-and-unusual-plants" },
   ];
 
   return (
