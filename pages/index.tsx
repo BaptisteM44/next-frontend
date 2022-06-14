@@ -37,8 +37,9 @@ const Home: NextPage<HomePageProps> = ({ featuredProducts }) => {
           alt="Front of a flower shop"
           layout="fill"
           objectFit="cover"
-          sizes="75vw"
-          quality={60}
+          sizes="100vw"
+          placeholder="blur"
+          quality={70}
         />
 
         <div className="absolute top-0 left-0 right-0 bottom-0 flex items-end justify-start bg-black bg-opacity-40">

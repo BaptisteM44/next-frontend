@@ -87,6 +87,8 @@ const Category: NextPage<CategoryPageProps> = ({ products, category }) => {
             objectFit="cover"
             layout="fill"
             sizes="100vw"
+            quality={70}
+            placeholder="blur"
             priority
           />
         </div>
