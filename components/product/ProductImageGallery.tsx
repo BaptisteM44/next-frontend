@@ -10,11 +10,13 @@ type ImageGallery = {
 type ProductImageGalleryProps = {
   className?: string;
   images: ImageGallery[];
+  blurDataUrl?: string;
 };
 
 const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
   className,
   images,
+  blurDataUrl,
 }) => {
   const [currentImage, setCurrentImage] = useState<ImageGallery>(images[0]);
 
@@ -31,10 +33,12 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({
           className="rounded-md"
           src={currentImage.src}
           alt={currentImage.alt}
-          quality={90}
+          quality={80}
           layout="fill"
           objectFit="cover"
-          sizes="75vw"
+          sizes="66vw"
+          placeholder={blurDataUrl ? "blur" : undefined}
+          blurDataURL={blurDataUrl}
           priority
         />
       </div>

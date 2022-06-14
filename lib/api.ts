@@ -10,7 +10,7 @@ const productQuery = qs.stringify(
   {
     fields: "*",
     populate: {
-      product_image: { fields: ["url", "alternativeText"] },
+      product_image: { fields: ["url", "alternativeText", "formats"] },
       product_inventory: { fields: ["sku"] },
       product_images_gallery: { fields: ["url", "alternativeText"] },
       product_price: { fields: ["regular_price", "sale_price"] },
@@ -18,7 +18,7 @@ const productQuery = qs.stringify(
       linked_products: {
         fields: ["product_name", "slug"],
         populate: {
-          product_image: { fields: ["url", "alternativeText"] },
+          product_image: { fields: ["url", "alternativeText", "formats"] },
           product_price: { fields: ["regular_price", "sale_price"] },
           product_category: { fields: ["name", "slug"] },
         },

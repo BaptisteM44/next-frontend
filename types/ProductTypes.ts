@@ -34,6 +34,7 @@ export type ProductPage = {
   shortDescription: string;
   description: string;
   sku: string;
+  imageThumbnailSrc: string;
   imageGallery: {
     src: string;
     alt: string;

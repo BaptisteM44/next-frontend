@@ -39,6 +39,8 @@ export const toProductPage = (product: StrapiProduct): ProductPage => ({
   shortDescription: product.product_short_description,
   description: product.product_description,
   sku: product.product_inventory.sku,
+  imageThumbnailSrc:
+    product.product_image.data.attributes.formats.thumbnail.url,
   imageGallery: product.product_images_gallery.data.map((image) => ({
     src: image.attributes.url,
     alt: image.attributes.alternativeText,

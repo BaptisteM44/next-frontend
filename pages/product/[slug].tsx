@@ -21,6 +21,7 @@ type StaticPropsParams = ParsedUrlQuery & {
 
 type ProductPageProps = {
   product: ProductPage;
+  productBlurDataUrl: string;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -44,10 +45,20 @@ export const getStaticProps: GetStaticProps<
     toProductPage(response.attributes)
   );
 
-  return { props: { product } };
+  const productBlurDataUrl = await fetch(product.imageThumbnailSrc)
+    .then((response) => response.arrayBuffer())
+    .then((buffer) => {
+      const base64 = Buffer.from(buffer).toString("base64");
+      return `data:image/webp;base64,${base64}`;
+    });
+
+  return { props: { product, productBlurDataUrl } };
 };
 
-const Product: NextPage<ProductPageProps> = ({ product }) => {
+const Product: NextPage<ProductPageProps> = ({
+  product,
+  productBlurDataUrl,
+}) => {
   const router = useRouter();
 
   const [count, setCount] = useState(1);
@@ -74,7 +85,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
             name={product.name}
           />
 
-          <ProductImageGallery images={product.imageGallery} />
+          <ProductImageGallery
+            images={product.imageGallery}
+            blurDataUrl={productBlurDataUrl}
+          />
         </section>
 
         <section className="mb-12 md:w-1/2 md:pl-8 lg:pl-12">
