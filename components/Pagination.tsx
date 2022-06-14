@@ -41,9 +41,12 @@ const Pagination: React.FC<PaginationProps> = ({
           <button
             type="button"
             className="text-accent"
+            aria-label="Go to previous page"
             onClick={goPreviousPage}
           >
-            <ChevronLeftIcon className="h-auto w-4" />
+            <span aria-hidden="true">
+              <ChevronLeftIcon className="h-auto w-4" />
+            </span>
           </button>
         </li>
 
@@ -66,8 +69,15 @@ const Pagination: React.FC<PaginationProps> = ({
         ))}
 
         <li className="flex w-10 cursor-pointer items-center justify-center text-center">
-          <button type="button" className="text-accent" onClick={goNextPage}>
-            <ChevronRightIcon className="h-auto w-4" />
+          <button
+            type="button"
+            className="text-accent"
+            aria-label="Go to next page"
+            onClick={goNextPage}
+          >
+            <span aria-hidden="true">
+              <ChevronRightIcon className="h-auto w-4" />
+            </span>
           </button>
         </li>
       </ul>
