@@ -2,10 +2,10 @@
  * Available image formats by default in Strapi.
  */
 export enum StrapiImageFormats {
-  thumbnail,
-  small,
-  medium,
-  large,
+  thumbnail = "thumbnail",
+  small = "small",
+  medium = "medium",
+  large = "large",
 }
 
 /**
