@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<ProductsPageProps> = async () => {
 };
 
 const Products: NextPage<ProductsPageProps> = ({ products }) => {
-  const PRODUCTS_PER_PAGE = 12;
+  const PRODUCTS_PER_PAGE = 8;
 
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -71,7 +71,7 @@ const Products: NextPage<ProductsPageProps> = ({ products }) => {
 
           <Pagination
             count={products.length}
-            itemsPerPage={12}
+            itemsPerPage={PRODUCTS_PER_PAGE}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
